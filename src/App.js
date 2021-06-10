@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
 
 function App() {
+  const [valor, setValor] = useState(0);
+
+  const aumentarValor = () => {
+    setValor(valor >= 10 ? 10 : valor + 1);
+  };
+
+  const bajarValor = () => {
+    setValor(valor <= 0 ? 0 : valor - 1);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={bajarValor}>-</button>
+      <input value={valor} readOnly={true} />
+      <button onClick={aumentarValor}>+</button>
     </div>
   );
 }
